@@ -8,10 +8,12 @@ function App() {
   return (
     <div className="App">
       <h1>Meu Projeto</h1>
-      <Comentario />
-      <Comentario />
-      <Comentario />
-      <Comentario />
+      <Comentario nome="João" email="joão@gmail.com" data={new Date(2020, 3, 19)} >
+         Olá tudo bem
+      </Comentario>
+      <Comentario nome="Maria" email="maria@gmail.com" data={new Date(2020, 3, 21)}>
+         Olá tudo bem sim;
+      </Comentario>
     </div>
   );
 }
