@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 import Comentario from './components/Comentario';
@@ -31,14 +31,6 @@ class App extends Component {
 
   adicionandoComentario = (event) => {
     event.preventDefault();
-  /*   console.log("Adicionando um comentario");
-    const novoComentario = {
-      nome: 'Leo',
-      email: 'Leo@ibm.com',
-      data: new Date(),
-      message: 'Cheguei!!!'
-    } */
-
     const novoComentario = { ...this.state.novoComentario,  data: new Date()};
     this.setState({ 
       comentarios: [...this.state.comentarios, novoComentario],
@@ -54,7 +46,6 @@ class App extends Component {
   }
 
   digitacao = evento => {
-    console.log(evento);
     const {value, name} = evento.target;
     this.setState({novoComentario: {...this.state.novoComentario, [name]: value}})
   }
@@ -75,12 +66,13 @@ class App extends Component {
          {comentario.message}
        </Comentario>
         ))}
-        <form method="post" onSubmit={this.adicionandoComentario}>
+        <form method="post" onSubmit={this.adicionandoComentario} className="Novo-Comentario">
           <h2>Adicionar comentario</h2>
           <div>
             <input 
                 type="text" 
                 name="nome" 
+                required
                 value={this.state.novoComentario.nome}
                 onChange={this.digitacao}
                 placeholder="Digite seu nome" 
@@ -90,6 +82,7 @@ class App extends Component {
             <input 
               type="text" 
               name="email" 
+              required
               placeholder="Digite seu email" 
               onChange={this.digitacao}  
               value={this.state.novoComentario.email} />
@@ -98,6 +91,7 @@ class App extends Component {
             <textarea 
               name="message" 
               rows="4" 
+              required
               onChange={this.digitacao}  
               value={this.state.novoComentario.message}
             ></textarea>
